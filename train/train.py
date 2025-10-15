@@ -6,6 +6,7 @@ import numpy as np
 from pathlib import Path
 
 from sklearn.datasets import load_diabetes
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
@@ -26,7 +27,7 @@ def train_and_evaluate(X, y, random_state=42):
     # build pipeline: scaler + SVM regressor
     pipeline = Pipeline([
         ("scaler", StandardScaler()),
-        ("regressor", SVR(kernel="rbf", C=1.0, epsilon=0.2))
+        ("regressor", LinearRegression())
     ])
 
     # fit model
@@ -42,11 +43,7 @@ def train_and_evaluate(X, y, random_state=42):
         "rmse": float(rmse),
         "n_train": len(X_train),
         "n_test": len(X_test),
-        "random_state": random_state,
-        "model_type": "SVR",
-        "kernel": "rbf",
-        "C": 1.0,
-        "epsilon": 0.2
+        "model_type": "LinearRegression",
     }
 
     return pipeline, metrics

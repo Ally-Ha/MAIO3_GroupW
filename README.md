@@ -1,6 +1,6 @@
 # MAIO-3 — Virtual Diabetes Clinic Triage
 
-This repository contains a small example ML project for a virtual diabetes clinic triage. It trains a simple SVR model on the scikit-learn diabetes dataset, exposes a small FastAPI model-serving API, and includes CI/CD workflows that lint, train, test, build a container, and publish releases.
+This repository contains a small example ML project for a virtual diabetes clinic triage. It trains a simple linear regression model on the scikit-learn diabetes dataset, exposes a small FastAPI model-serving API, and includes CI/CD workflows that lint, train, test, build a container, and publish releases.
 
 ## Contents
 
@@ -20,7 +20,7 @@ This repository contains a small example ML project for a virtual diabetes clini
 Run the following command
 
 ```bash
-docker run -p 8000:8000 ghcr.io/ally-ha/MAIO3_GroupW:v1
+docker run -p 8000:8000 ghcr.io/ally-ha/maio3_groupw:v2
 ```
 
 ## Full local Setup
@@ -43,7 +43,7 @@ Train the model (creates model and metrics)
 python train/train.py --model-out app/artifacts/model.pkl --metrics-out app/artifacts/metrics.json
 ```
 
-The training script trains an SVR on the scikit-learn diabetes dataset and writes two artifacts:
+The training script trains an a linear regression on the scikit-learn diabetes dataset and writes two artifacts:
 
 - `app/artifacts/model.pkl` — the pickled sklearn pipeline used by the API
 - `app/artifacts/metrics.json` — evaluation metrics (RMSE, train/test sizes, hyperparams)
